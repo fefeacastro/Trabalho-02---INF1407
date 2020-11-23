@@ -37,5 +37,5 @@ django-admin startproject LojaMariFe
 conda activate inf1407
 python manage.py runserver (rodar esse comando na mesma pasta que tiver o manage.py)
 ```
-abrir em algum browser: http://localhost:8000/
-    Toda mudança de interface feita vai ser automaticamente mostrada no browser quando você der refresh nele (f5 ou ctrl + f5 ou até ctrl + shift + r - só tem q ver como é isso pra mac).
+Abrir em algum browser: http://localhost:8000/
+Toda mudança de interface feita vai ser automaticamente mostrada no browser quando você der refresh nele (f5 ou ctrl + f5 ou até ctrl + shift + r - só tem q ver como é isso pra mac).
