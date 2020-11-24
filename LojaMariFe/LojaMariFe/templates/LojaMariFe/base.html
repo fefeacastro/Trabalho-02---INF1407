@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="../../static/css/NavBar.css">
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        Aqui tem q ter Navbar e Footer (eu só apareço porque a página homepage.html está me extendendo - base).
+        <!--Aqui tem q ter Navbar e Footer (eu só apareço porque a página homepage.html está me extendendo - base).-->
         {% if user.is_authenticated %}
             <a href="{% url 'homepage' %}">Homepage</a> |
             <a href="{% url 'password_change' %}">Troca senha</a> |
@@ -14,6 +15,18 @@
             <a href="{% url 'register' %}">Registro</a> |
             <a href="{% url 'login' %}">Login</a>
         {% endif %}
+        <div class="bar">
+            <div class="side-bar">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <h4>Categorias</h4>
+                    <li><a href="#">Categoria 1</a></li>
+                    <li><a href="#">Categoria 2</a></li>
+                    <li><a href="#">Categoria 3</a></li>
+                    <li><a href="#">Categoria 4</a></li>
+                </ul>
+            </div>
+        </div>
         <br>
         {% block content %}{% endblock %}
     </body>
