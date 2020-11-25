@@ -21,7 +21,7 @@
     border: none;
     outline: 0;
     padding: 12px;
-    color: white;
+    color: #E0A158;
     background-color: #4b4276;
     text-align: center;
     cursor: pointer;
@@ -30,5 +30,6 @@
 }
   
 .card button:hover {
-    opacity: 0.7;
+    opacity: 0.8;
+    color:  #E38417;;
 }

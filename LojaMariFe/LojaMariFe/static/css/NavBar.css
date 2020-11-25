@@ -10,6 +10,19 @@
     background: #f3f5f9;
   }
 
+  .nav-bar-bg{
+    background-color: #4b4276 !important;
+  }
+
+  .navbar-light .navbar-nav .nav-link{
+    color: #E0A158 !important;
+  }
+
+  .navbar-light .navbar-nav .nav-link:hover{
+    color: #E38417 !important;
+  }
+
+
   .bar{
     display: flex;
     position: relative;
@@ -17,10 +30,10 @@
 
   .bar .side-bar {
     position: fixed;
-    width: 200px;
+    width: 150px;
     height: 100%;
     background-color: #4b4276;
-    padding: 30px 0;
+    padding: 0px 0;
   }
   
   .bar .side-bar h4{
@@ -35,7 +48,7 @@
   }
 
   .bar .side-bar ul li a{
-    color: #E0A158; */
+    color: #E0A158; 
     /* color: #DEA96B; */
     display: block;
   }
