@@ -35,7 +35,8 @@
   }
 
   .bar .side-bar ul li a{
-    color: #bdb8d7;
+    color: #E0A158; */
+    /* color: #DEA96B; */
     display: block;
   }
 
@@ -48,10 +49,10 @@
   }
   .bar .side-bar ul li.active a{
     font-weight: bold;
-    color: white;
+    color: #E38417;
   }
   .bar .side-bar ul li:hover a{
-    color: #fff;
+    color: #E38417;
     font-weight: bold;
   }
 
