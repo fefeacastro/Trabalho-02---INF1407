@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
+from .models import Produto
 
 # Create your views here.
 def homepage(request):
@@ -28,7 +29,9 @@ def carrinho(request):
 
 
 def camisa(request):
-    return render(request, 'LojaMariFe/camisa.html', context=None)
+    camisas = Produto.objects.filter(categoria = 'Camisa')
+    context = {'camisas':camisas,}
+    return render(request, 'LojaMariFe/camisa.html', context=context)
 
 
 def calca(request):
