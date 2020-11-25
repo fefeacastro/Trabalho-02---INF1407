@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from project import views
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.urls.base import reverse_lazy
 
@@ -31,4 +31,3 @@ urlpatterns = [
     path('camisa/', views.camisa, name='camisa'),
     path('calca/', views.calca, name='calca')
 ]
-

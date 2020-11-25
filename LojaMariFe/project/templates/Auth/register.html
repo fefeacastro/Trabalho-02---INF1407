@@ -1,0 +1,14 @@
+{% extends 'LojaMariFe/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Entre com os seus dados</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Cria usuário">
+        </form>
+    </div>
+{% endblock %}
