@@ -26,5 +26,8 @@ def register(request):
 def carrinho(request):
     return render(request, 'LojaMariFe/carrinho.html', context=None)
 
-def categoria1(request):
-    return render(request, 'LojaMariFe/categoria1.html', context=None)
+def camisa(request):
+    return render(request, 'LojaMariFe/camisa.html', context=None)
+
+def calca(request):
+    return render(request, 'LojaMariFe/calca.html', context=None)
