@@ -25,3 +25,6 @@ def register(request):
 @login_required
 def carrinho(request):
     return render(request, 'LojaMariFe/carrinho.html', context=None)
+
+def categoria1(request):
+    return render(request, 'LojaMariFe/categoria1.html', context=None)
