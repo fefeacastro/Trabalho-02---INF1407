@@ -43,6 +43,6 @@ Toda mudança de interface feita vai ser automaticamente mostrada no browser qua
 
 ## Criando uma nova tabela no banco
 ```
-python manage.py makemigrations LojaMariFe
+python manage.py makemigrations project
 python manage.py migrate
 ```
