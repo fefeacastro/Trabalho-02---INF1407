@@ -9,6 +9,12 @@
 .price {
     color: grey;
     font-size: 22px;
+    margin-bottom: -0.3rem;
+}
+
+.stock{
+    color: lightgray;
+    font-size: 14px;
 }
 
 .column{
