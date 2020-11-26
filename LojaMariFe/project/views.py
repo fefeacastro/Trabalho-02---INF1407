@@ -30,7 +30,14 @@ def carrinho(request):
 
 def camisa(request):
     camisas = Produto.objects.filter(categoria = 'Camisa')
-    context = {'camisas':camisas,}
+    imagens = []
+    for camisa in camisas:
+        camisa.imagem = str(camisa.imagem)[22:]
+
+    context = {
+        'camisas':camisas,
+    }
+
     return render(request, 'LojaMariFe/camisa.html', context=context)
 
 
