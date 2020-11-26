@@ -35,4 +35,7 @@ def camisa(request):
 
 
 def calca(request):
-    return render(request, 'LojaMariFe/calca.html', context=None)
+    calcas = Produto.objects.filter(categoria = 'Calça')
+    print(calcas)
+    context = {'calcas':calcas,}
+    return render(request, 'LojaMariFe/calca.html', context=context)

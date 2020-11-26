@@ -6,36 +6,14 @@
     <div class="container">
         <h1>Calças</h1>
         <div class="row">
+            {% for calca in calcas%} 
             <div class="card column">
-                <img src="../../static/images/Moletom preto.jpg" style="width:175px">
-                <h1>Moletom preto</h1>
-                <p class="price">R$49.99</p>
-                <p>calça de moletom na cor preto</p>
+                <img src="../../static/images/Moletom preto.jpg" style="width:180px">
+                <h1>{{calca.nome}}</h1>
+                <p class="price">R${{calca.preco}}</p>
+                <p>{{calca.descricao}}</p>
                 <p><button>Adicionar ao carrinho</button></p>
             </div>
-            <div class="card column">
-                <img src="../../static/images/Jeans.jpg" style="width:180px">
-                <h1>Calça Jeans</h1>
-                <p class="price">R$69.99</p>
-                <p>descrição do produto..</p>
-                <p><button>Adicionar ao carrinho</button></p>
-            </div>
-            <div class="card column">
-                <img src="../../static/images/Jeans escuro.jpg" style="width:180px">
-                <h1>Calça Jeans</h1>
-                <p class="price">R$79.99</p>
-                <p>descrição do produto..</p>
-                <p><button>Adicionar ao carrinho</button></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card column">
-                <img src="../../static/images/Moletom cinza.jpg" style="width:180px">
-                <h1>Produto 4</h1>
-                <p class="price">R$49.99</p>
-                <p>descrição do produto..</p>
-                <p><button>Adicionar ao carrinho</button></p>
-            </div>
-        </div>
+        {%endfor%}
     </div>
 {% endblock %}
