@@ -5,6 +5,15 @@
 {% block content %}
     <div class="container">
         <h2>Seu carrinho</h2> 
-        Aqui a gente deve usar o negócio de session que ele ta dando.
+        <br>
+        {% for produto in produtos %}
+            <div class="card column">
+                <img src="../../static/images/{{produto.0.imagem}}" style="width:100%">
+                <h1>{{produto.0.nome}}</h1>
+                <p class="price">R${{produto.0.preco}}</p>
+                <p class="stock">{{produto.0.quantidade}} em estoque.</p>
+                <p>{{produto.0.descricao}}</p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

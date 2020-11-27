@@ -1,6 +1,6 @@
 {% extends 'LojaMariFe/base.html' %}
 
-{% block title %}camisa{% endblock %}
+{% block title %}Camisa{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -14,7 +14,10 @@
                     <p class="price">R${{camisa.preco}}</p>
                     <p class="stock">{{camisa.quantidade}} em estoque.</p>
                     <p>{{camisa.descricao}}</p>
-                    <p><button>Adicionar ao carrinho</button></p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <p><button name='id' value="{{ camisa.pk }}">Adicionar ao carrinho</button></p>
+                    </form>
                 </div>
             {% endfor %}
         </div>
