@@ -1,6 +1,11 @@
 {% extends 'LojaMariFe/base.html' %}
+{% load static %}
 
 {% block title %}Camisa{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'js/estoque.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -16,7 +21,7 @@
                     <p>{{camisa.descricao}}</p>
                     <form method="POST">
                         {% csrf_token %}
-                        <p><button name='id' value="{{ camisa.pk }}">Adicionar ao carrinho</button></p>
+                        <p><button name="id" id="{{camisa.imagem}}" value={{camisa.pk}}>Adicionar ao carrinho</button></p>
                     </form>
                 </div>
             {% endfor %}
