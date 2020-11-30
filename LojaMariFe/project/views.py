@@ -64,17 +64,32 @@ def camisa(request):
 
 def calca(request):
     calcas = Produto.objects.filter(categoria = 'Calça')
+    imagens = []
+    for calca in calcas:
+        calca.imagem = str(calca.imagem)[22:]
     context = {'calcas':calcas,}
+    # TO DO:
+    # carrinho
     return render(request, 'LojaMariFe/calca.html', context=context)
 
 
 def sapato(request):
     sapatos = Produto.objects.filter(categoria = 'Sapato')
+    imagens = []
+    for sapato in sapatos:
+        sapato.imagem = str(sapato.imagem)[22:]
     context = {'sapatos':sapatos,}
+    # TO DO:
+    # carrinho
     return render(request, 'LojaMariFe/sapato.html', context=context)
 
 
 def vestido(request):
     vestidos = Produto.objects.filter(categoria = 'Vestido')
+    imagens = []
+    for vestido in vestidos:
+        vestido.imagem = str(vestido.imagem)[22:]
     context = {'vestidos':vestidos,}
+    # TO DO:
+    # carrinho
     return render(request, 'LojaMariFe/vestido.html', context=context)

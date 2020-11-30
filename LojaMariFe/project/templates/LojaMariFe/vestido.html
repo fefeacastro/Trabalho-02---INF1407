@@ -9,7 +9,7 @@
         <div class="row">
             {% for vestido in vestidos%} 
                 <div class="card column">
-                    <img src="../../static/images/Camisa 1.jpg" style="width:100%">
+                    <img src="../../static/images/{{vestido.imagem}}" style="width:100%">
                     <h1>{{vestido.nome}}</h1>
                     <p class="price">R${{vestido.preco}}</p>
                     <p class="stock">{{vestido.quantidade}} em estoque.</p>
