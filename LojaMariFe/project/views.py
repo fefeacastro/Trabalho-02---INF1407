@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Produto
+from .utils import ajeitaCaminhoImagens, addNoCarrinho
+from django.http import JsonResponse
 
 # Create your views here.
 def homepage(request):
@@ -35,61 +37,78 @@ def register(request):
 def carrinho(request):
     produtos = [] 
     for i in request.session.get('carrinho', None):
-        produtos.append(Produto.objects.filter(categoria = 'Camisa', pk=i))
+        produtos.append(Produto.objects.filter(pk=i))
 
-    context = {'produtos': produtos, }
+    preco = 0.0
+    for produto in produtos:
+        ajeitaCaminhoImagens(produto)
+        preco += float(produto[0].preco)
+
+    context = {'produtos': produtos, 
+        'preco': preco}
 
     return render(request, 'LojaMariFe/carrinho.html', context=context)
 
 
 def camisa(request):
     camisas = Produto.objects.filter(categoria = 'Camisa')
-    imagens = []
-    for camisa in camisas:
-        camisa.imagem = str(camisa.imagem)[22:]
+
+    ajeitaCaminhoImagens(camisas)
 
     context = {
         'camisas':camisas,
     }
 
     if request.POST:
-        carrinho = request.session.get('carrinho', None)
-        if not carrinho:
-            carrinho = []
-        carrinho.append(request.POST.get('id'))
-        request.session['carrinho'] = carrinho
+        addNoCarrinho(request)
 
     return render(request, 'LojaMariFe/camisa.html', context=context)
 
 
 def calca(request):
     calcas = Produto.objects.filter(categoria = 'Calça')
-    imagens = []
-    for calca in calcas:
-        calca.imagem = str(calca.imagem)[22:]
+
+    ajeitaCaminhoImagens(calcas)
+
     context = {'calcas':calcas,}
-    # TO DO:
-    # carrinho
+    
+    if request.POST:
+        addNoCarrinho(request)
+
     return render(request, 'LojaMariFe/calca.html', context=context)
 
 
 def sapato(request):
     sapatos = Produto.objects.filter(categoria = 'Sapato')
-    imagens = []
-    for sapato in sapatos:
-        sapato.imagem = str(sapato.imagem)[22:]
+
+    ajeitaCaminhoImagens(sapatos)
+
     context = {'sapatos':sapatos,}
-    # TO DO:
-    # carrinho
+    
+    if request.POST:
+        addNoCarrinho(request)
+
     return render(request, 'LojaMariFe/sapato.html', context=context)
 
 
 def vestido(request):
     vestidos = Produto.objects.filter(categoria = 'Vestido')
-    imagens = []
-    for vestido in vestidos:
-        vestido.imagem = str(vestido.imagem)[22:]
+
+    ajeitaCaminhoImagens(vestidos)
+
     context = {'vestidos':vestidos,}
-    # TO DO:
-    # carrinho
+    
+    if request.POST:
+        addNoCarrinho(request)
+
     return render(request, 'LojaMariFe/vestido.html', context=context)
+
+
+def atualizaEstoque(request):
+    produto = Produto.objects.get(pk=request.GET.get('produto'))
+
+    produto.quantidade = int(produto.quantidade) - 1
+    produto.save() 
+
+    resposta = {'qtd': produto.quantidade, }
+    return JsonResponse(resposta)
