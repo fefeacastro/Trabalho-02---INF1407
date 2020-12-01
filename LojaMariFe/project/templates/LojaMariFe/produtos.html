@@ -4,7 +4,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block head %}
-    <!-- <script> var qtdProd = ;</script> -->
+    <script> var ids = "{{ ids | safe }}"; </script>
     <script type='text/javascript' src="{% static 'js/estoque.js' %}"></script>
 {% endblock %}
 
@@ -27,7 +27,7 @@
                     {% if produto.quantidade > 0 %}
                         <form method="POST">
                             {% csrf_token %}
-                            <p><button name="id" id="{{produto.pk}}" value={{produto.pk}}>Adicionar ao carrinho</button></p>
+                            <p><button name="id" id="{{produto.pk}}" value="{{produto.pk}}">Adicionar ao carrinho</button></p>
                         </form>
                     {% endif %}
                 </div>
