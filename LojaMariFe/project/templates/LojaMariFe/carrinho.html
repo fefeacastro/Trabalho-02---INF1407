@@ -7,13 +7,13 @@
         <h2>Seu carrinho - Valor total: R${{ preco }}</h2> 
         <br>
         <div class="row">
-        {% for produto in produtos %}
+        {% for produto, count in produtos.items %}
             <div class="card column">
-                <img src="../../static/images/{{ produto.0.imagem }}" style="width:100%">
-                <h1>{{ produto.0.nome }}</h1>
-                <p class="price">R${{ produto.0.preco }}</p>
-                <p class="stock">{{ produto.0.quantidade }} em estoque.</p>
-                <p>{{ produto.0.descricao }}</p>
+                <img src="../../static/images/{{ produto.imagem }}" style="width:100%">
+                <h1>{{ produto.nome }}</h1>
+                <p class="price">R${{ produto.preco }}</p>
+                <p class="stock">{{ count }} no carrinho.</p>
+                <p>{{ produto.descricao }}</p>
             </div>
         {% endfor %}
         </div>

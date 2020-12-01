@@ -33,82 +33,55 @@ def register(request):
         return render(request, 'Auth/register.html', context)
 
 
-@login_required
-def carrinho(request):
-    produtos = [] 
-    for i in request.session.get('carrinho', None):
-        produtos.append(Produto.objects.filter(pk=i))
+def produtos(request, tipo):
+    produtos = Produto.objects.filter(categoria = tipo)
 
-    preco = 0.0
-    for produto in produtos:
-        ajeitaCaminhoImagens(produto)
-        preco += float(produto[0].preco)
-
-    context = {'produtos': produtos, 
-        'preco': preco}
-
-    return render(request, 'LojaMariFe/carrinho.html', context=context)
-
-
-def camisa(request):
-    camisas = Produto.objects.filter(categoria = 'Camisa')
-
-    ajeitaCaminhoImagens(camisas)
+    ajeitaCaminhoImagens(produtos)
 
     context = {
-        'camisas':camisas,
+        'produtos':produtos,
+        'title':tipo
     }
 
     if request.POST:
         addNoCarrinho(request)
 
-    return render(request, 'LojaMariFe/camisa.html', context=context)
+    return render(request, 'LojaMariFe/produtos.html', context=context)
 
 
-def calca(request):
-    calcas = Produto.objects.filter(categoria = 'Calça')
+@login_required
+def carrinho(request):
+    produtos = [] 
+    for i in request.session.get('carrinho', None):
+        produtos.append(Produto.objects.get(pk=i))
 
-    ajeitaCaminhoImagens(calcas)
+    dict_produtos = {}
+    preco = 0.0
 
-    context = {'calcas':calcas,}
-    
-    if request.POST:
-        addNoCarrinho(request)
+    for prod in produtos:
+        if prod in dict_produtos:
+            dict_produtos[prod] += 1
+        else:
+            dict_produtos[prod] = 1
+        
+        preco += float(prod.preco) 
 
-    return render(request, 'LojaMariFe/calca.html', context=context)
+    ajeitaCaminhoImagens(produtos)
 
+    context = {
+        'produtos': dict_produtos, 
+        'preco': float("{:.2f}".format(preco))}
 
-def sapato(request):
-    sapatos = Produto.objects.filter(categoria = 'Sapato')
-
-    ajeitaCaminhoImagens(sapatos)
-
-    context = {'sapatos':sapatos,}
-    
-    if request.POST:
-        addNoCarrinho(request)
-
-    return render(request, 'LojaMariFe/sapato.html', context=context)
-
-
-def vestido(request):
-    vestidos = Produto.objects.filter(categoria = 'Vestido')
-
-    ajeitaCaminhoImagens(vestidos)
-
-    context = {'vestidos':vestidos,}
-    
-    if request.POST:
-        addNoCarrinho(request)
-
-    return render(request, 'LojaMariFe/vestido.html', context=context)
+    return render(request, 'LojaMariFe/carrinho.html', context=context)
 
 
 def atualizaEstoque(request):
     produto = Produto.objects.get(pk=request.GET.get('produto'))
 
-    produto.quantidade = int(produto.quantidade) - 1
-    produto.save() 
+    if produto.quantidade > 0:
+        produto.quantidade = int(produto.quantidade) - 1
+
+    produto.save()
 
     resposta = {'qtd': produto.quantidade, }
     return JsonResponse(resposta)

@@ -28,9 +28,6 @@ urlpatterns = [
     path('accounts/logout/', LogoutView.as_view(next_page=reverse_lazy('homepage')), name='logout'),
     path('accounts/password_change/', PasswordChangeView.as_view(template_name='Auth/password_change_form.html', success_url=reverse_lazy('password_change_done')), name='password_change'),
     path('accounts/password_change_done/', PasswordChangeDoneView.as_view(template_name='Auth/password_change_done.html'), name='password_change_done'),
-    path('camisa/', views.camisa, name='camisa'),
-    path('calca/', views.calca, name='calca'),
-    path('vestido/', views.vestido, name='vestido'),
-    path('sapato/', views.sapato, name='sapato'),
+    path('produtos/<str:tipo>/', views.produtos, name='produtos'),
     path('atualizaEstoque/', views.atualizaEstoque, name='atualiza_estoque')
 ]

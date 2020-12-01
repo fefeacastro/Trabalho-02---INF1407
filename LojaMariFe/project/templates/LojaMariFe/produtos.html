@@ -1,0 +1,37 @@
+{% extends 'LojaMariFe/base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+    <!-- <script> var qtdProd = ;</script> -->
+    <script type='text/javascript' src="{% static 'js/estoque.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}s</h1>
+        <br>
+        <div class="row">
+            {% for produto in produtos %}
+                <div class="card column">
+                    <img src="../../static/images/{{produto.imagem}}" style="width:100%">
+                    <h1>{{produto.nome}}</h1>
+                    <p class="price">R${{produto.preco}}</p>
+                    {% if produto.quantidade == 0 %}
+                        <p class="stock">Fora de estoque.</p>
+                    {% else %}
+                        <p class="stock">{{produto.quantidade}} em estoque.</p>
+                    {% endif %}
+                    <p>{{produto.descricao}}</p>
+                    {% if produto.quantidade > 0 %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <p><button name="id" id="{{produto.pk}}" value={{produto.pk}}>Adicionar ao carrinho</button></p>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

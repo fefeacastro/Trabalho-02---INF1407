@@ -45,10 +45,10 @@
                     <ul>
                         <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
                         <h4>Categorias</h4>
-                        <li><a href="{% url 'camisa' %}">Camisa <i class="fas fa-tshirt"></i></a></li>
-                        <li><a href="{% url 'calca' %}">Calça</a></li>
-                        <li><a href="{% url 'sapato' %}">Sapato <i class="fas fa-shoe-prints"></i></a></li>
-                        <li><a href="{% url 'vestido' %}">Vestido</a></li>
+                        <li><a href="{% url 'produtos' tipo='Camisa' %}">Camisa <i class="fas fa-tshirt"></i></a></li>
+                        <li><a href="{% url 'produtos' tipo='Calça' %}">Calça</a></li>
+                        <li><a href="{% url 'produtos' tipo='Sapato' %}">Sapato <i class="fas fa-shoe-prints"></i></a></li>
+                        <li><a href="{% url 'produtos' tipo='Vestido' %}">Vestido</a></li>
                     </ul>
                 </div>
             </div>
