@@ -62,6 +62,11 @@ def produtos(request, tipo):
 
 @login_required
 def carrinho(request):
+    if request.POST:
+        carrinho = request.session.get('carrinho', None)
+        carrinho.remove(request.POST.get('id'))
+        request.session['carrinho'] = carrinho
+
     produtos = [] 
     for i in request.session.get('carrinho', None):
         produtos.append(Produto.objects.get(pk=i))
@@ -80,9 +85,14 @@ def carrinho(request):
     for prod in produtos:
         prod.imagem = str(prod.imagem)[22:]
 
+    ids = []
+    for i in request.session.get('carrinho', None):
+        ids.append(int(i))
+
     context = {
         'produtos': dict_produtos, 
-        'preco': float("{:.2f}".format(preco))
+        'preco': float("{:.2f}".format(preco)),
+        'ids':json.dumps(ids, default=lambda obj: obj.__dict__),
     }
 
     return render(request, 'LojaMariFe/carrinho.html', context=context)
@@ -91,8 +101,11 @@ def carrinho(request):
 def atualizaEstoque(request):
     produto = Produto.objects.get(pk=request.GET.get('produto'))
 
-    if produto.quantidade > 0:
-        produto.quantidade = int(produto.quantidade) - 1
+    if request.GET.get('page') == "produtos":
+        if produto.quantidade > 0:
+            produto.quantidade = int(produto.quantidade) - 1
+    else:
+        produto.quantidade = int(produto.quantidade) + 1
 
     produto.save()
 

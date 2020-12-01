@@ -1,6 +1,13 @@
 {% extends 'LojaMariFe/base.html' %}
+{% load static %}
 
 {% block title %}Carrinho{% endblock %}
+
+{% block head %}
+    <script> var ids = "{{ ids | safe }}"; </script>
+    <script> var page = 'carrinho'; </script>
+    <script type='text/javascript' src="{% static 'js/estoque.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -14,6 +21,10 @@
                 <p class="price">R${{ produto.preco }}</p>
                 <p class="stock">{{ count }} no carrinho.</p>
                 <p>{{ produto.descricao }}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <p><button name="id" id="{{produto.pk}}" value="{{produto.pk}}">Remover do carrinho</button></p>
+                </form>
             </div>
         {% endfor %}
         </div>
