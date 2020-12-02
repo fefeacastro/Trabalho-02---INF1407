@@ -39,7 +39,12 @@ def produtos(request, tipo):
         carrinho = request.session.get('carrinho', None)
         if not carrinho:
             carrinho = []
-        carrinho.append(request.POST.get('id'))
+
+        produto = Produto.objects.get(pk=request.POST.get('id'))
+
+        if produto.quantidade != 0:
+            carrinho.append(request.POST.get('id'))
+
         request.session['carrinho'] = carrinho
 
     produtos = Produto.objects.filter(categoria = tipo)
