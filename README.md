@@ -19,10 +19,10 @@ http://lojamarife.herokuapp.com/
 # Para testar localmente
 * Clone o repositório do GitHub
 * Navegue através de um prompt até a pasta clonada
-* Execute os seguintes comandos:
+* Execute os seguintes comandos (é necessário ter o PostgreSQL instalado na máquina):
 ```
-conda create --name inf1407 python
-conda activate inf1407
+conda create --name <nome> python
+conda activate <nome>
 pip install -r requirements.txt
 cd LojaMariFe
 python manage.py runserver
