@@ -19,7 +19,7 @@
                 <img src="../../static/images/{{ produto.imagem }}" style="width:100%">
                 <h1>{{ produto.nome }}</h1>
                 <p class="price">R${{ produto.preco }}</p>
-                <p class="stock">{{ count }} no carrinho.</p>
+                <p class="cart-quant">{{ count }} no carrinho.</p>
                 <p>{{ produto.descricao }}</p>
                 <form method="POST">
                     {% csrf_token %}

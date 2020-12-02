@@ -17,6 +17,11 @@
     font-size: 14px;
 }
 
+.cart-quant{
+    color: rgb(85, 85, 85);
+    font-size: 14px;
+}
+
 .column{
     float: left;
     width: 33%;
