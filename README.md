@@ -3,27 +3,34 @@
 ## Participantes
 Fernanda Castro e Mariana Salgueiro
 
-## Segundo Trabalho de Programação para Web de 2020/2
-Instruções gerais:
-* Trabalho individual ou em grupo de até 2 componentes.
-* Data da entrega: 02/12/2020.
-* Data para apresentação individual: 07-09/12/2020.
-ATENÇÃO: antes de desenvolver o site, me envie por email um resumo do que será implementado no site. Esse resumo será utilizado para eu avaliar se o conteúdo está de acordo com o esperado.
-Desenvolva um site Web com o conteúdo apresentado em sala de aula:
-* Site em Django
-* Deve conter as quatro operações básicas em banco de dados (CRUD)
-* Deve ser publicado
-* Usar Git para controle de versão
-* Realizar push semanalmente.
-* Como haverá controle de versão e de quem fez o quê pelo Git, as notas dos componentes do grupo podem ser diferentes.
-* AJAX
-* Login, acesso e/ou ações selecionadas por usuário.
-* A entrega deverá ser acompanhada por uma carta relatando o que foi desenvolvido.
-Para realizar a entrega:
-* Publique o seu site. Me envie o link.
-* Disponibilize a última versão integral em um Git. Me envie o link.
+# Para testar o site no ar
 
-## Primeira Instalação
+## Link
+http://lojamarife.herokuapp.com/
+
+## Instruções de uso (Google Chrome)
+* Ao acessar o site pela primeira vez faça seu registro
+* Faça Login
+* Navegue pelo site
+* Coloque produtos no carrinho
+* Retire produtos do carrinho
+* Mude sua senha
+
+# Para testar localmente
+* Clone o repositório do GitHub
+* Navegue através de um prompt até a pasta clonada
+* Execute os seguintes comandos:
+```
+conda create --name inf1407 python
+conda activate inf1407
+pip install -r requirements.txt
+cd LojaMariFe
+python manage.py runserver
+```
+
+# Para o desenvolvimento foi necessário
+
+## Primeira instalação
 ```
 conda create --name inf1407 python
 activate inf1407
