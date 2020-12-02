@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'LojaMariFe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd90mif2aj6153p',
-        'HOST': 'ec2-34-192-122-0.compute-1.amazonaws.com',
+        'NAME': 'd5aqjj7rtcs1q1',
+        'HOST': 'ec2-54-235-158-17.compute-1.amazonaws.com',
         'PORT': 5432,
-        'USER': 'aujnvlpkbdcmpl',
-        'PASSWORD': 'bf555f7eb2fa475f400d4918d3398cc8d73996b57b4916a646702fd210410962'
+        'USER': 'nmsunusdooonzk',
+        'PASSWORD': '016419fc1baee8816ba32df114d82c20ad800cc5ebe8400a00422a5fb1a46b9e'
     }
 }
 
@@ -128,10 +128,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = "LojaMariFe/project/static"
+STATIC_ROOT = "LojaMariFe/project/static/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "project/static"),
+    os.path.join(BASE_DIR, "project/static/"),
 ]
 
 django_heroku.settings(locals())
